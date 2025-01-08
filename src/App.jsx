@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import './components'
 import { Footer, Header } from './components'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import authService from './appwrite/auth'
 import { login, logout } from './store/authSlice'
 import { Outlet } from 'react-router-dom'
 
 function App() {
   const [loading, setLoading] = useState(true)
+  const authStatus = useSelector(state => state.auth.status)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -21,7 +22,7 @@ function App() {
       }
     })
     .finally(setLoading(false))
-  }, [])
+  }, [authStatus])
 
   return !loading ? (
     <div>
