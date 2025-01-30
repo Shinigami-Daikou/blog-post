@@ -7,7 +7,6 @@ import store from './store/store.js'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home, AddPost, EditPost, Login, Signup, Post, AllPosts} from './pages'
 import { AuthLayout } from './components/index.js'
-import conf from './conf/conf.js'
 
 
 const router = createBrowserRouter([

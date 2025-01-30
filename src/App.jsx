@@ -25,9 +25,11 @@ function App() {
   }, [authStatus])
 
   return !loading ? (
-    <div>
+    <div className='flex flex-col h-svh'>
       <Header />
-      <Outlet />
+      <div className='flex-grow'>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   ) :

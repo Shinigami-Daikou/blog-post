@@ -14,11 +14,6 @@ export default function Header() {
             active: true
         },
         {
-            name: "Login",
-            slug: "/login",
-            active: !authStatus,
-        },
-        {
             name: "Signup",
             slug: "/signup",
             active: !authStatus,
@@ -35,13 +30,21 @@ export default function Header() {
         },
     ]
     return (
-    <header className='py-3 shadow bg-gray-500'>
-        <Container>
+    <header className='py-1 shadow bg-gray-800 text-white'>
+        <Container mxw='max-w-full' p='px-8 py-2'>
             <nav className='flex'>
                 <div className='mr-4'>
                     <Link to='/'>
-                        <Logo width='70px'   />
-                    </Link>
+                        <div className='flex items-center px-5'>
+                            <div>
+                                <Logo width='50px'/>
+                            </div>
+                            <div className='text-3xl px-2 text-balance font-normal'>
+                                BlogPost
+                            </div>
+                        </div>
+                        
+                    </Link> 
                 </div>
 
                 <ul className='flex ml-auto'>
@@ -49,11 +52,17 @@ export default function Header() {
                         item.active ? 
                             <li key={item.name}>
                                 <button onClick={() => navigate(item.slug)}
-                                    className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+                                    className='inline-block text-lg px-6 py-2 duration-200 hover:bg-gray-700 hover:text-gray-300 rounded-md'
                                 >{item.name}</button>
                             </li> : null
                     )}
-
+                    {!authStatus && (
+                        <li key='Login'>
+                            <button onClick={() => navigate('/login')}
+                                className='inline-block text-lg px-6 py-2 duration-200 hover:bg-blue-500 rounded-md'
+                            >Login &#8594;</button>
+                        </li>
+                    )}
                     {authStatus && (
                         <li>
                             <LogoutBtn />
